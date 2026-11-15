@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>DAEWOOD WIFI · néon 3 (le réseau du marché)</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  /* Rendered to one 1080 x 1080 image: the captive portal cannot load anything from the internet. */
+  :root { --black: #070504; --orange: #FFA12B; --cream: #FFF1DC; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 540px; }
+  body { font-family: "Archivo", sans-serif; background: var(--black); color: var(--cream); position: relative; overflow: hidden; }
+  .d { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; }
+  svg.art { position: absolute; inset: 0; width: 540px; height: 540px; }
+
+  .top { position: absolute; left: 28px; top: 26px; }
+  .brand {
+    display: inline-block; border: 2px solid var(--orange); color: var(--orange); font-weight: 900; font-size: 13px; letter-spacing: .18em;
+    padding: 4px 9px; border-radius: 4px; box-shadow: 0 0 8px rgba(255,161,43,.7); text-shadow: 0 0 6px var(--orange);
+  }
+  h1 {
+    font-size: 62px; line-height: .98; margin-top: 12px; color: #FFE6C2;
+    text-shadow: 0 0 4px #FFD08A, 0 0 14px var(--orange), 0 0 32px var(--orange), 0 0 62px rgba(255,120,0,.55);
+  }
+
+  .stamp {
+    position: absolute; left: 28px; bottom: 28px; border: 2px solid var(--cream); border-radius: 12px; padding: 10px 16px 11px;
+    transform: rotate(-4deg); background: rgba(7,5,4,.85);
+    box-shadow: 0 0 8px rgba(255,241,220,.8), 0 0 22px rgba(255,161,43,.45), inset 0 0 10px rgba(255,241,220,.25);
+  }
+  .stamp .k { font-weight: 900; font-size: 13px; letter-spacing: .14em; text-shadow: 0 0 6px rgba(255,241,220,.8); }
+  .stamp .p { font-size: 50px; line-height: 1; color: #FFE6C2; margin-top: 2px; text-shadow: 0 0 4px #FFD08A, 0 0 14px var(--orange), 0 0 30px var(--orange); }
+  .stamp .p small { font-size: 24px; margin-left: 3px; }
+  .stamp .m { font-weight: 700; font-size: 14px; margin-top: 2px; text-shadow: 0 0 6px rgba(255,241,220,.7); }
+</style>
+</head>
+<body>
+
+<svg class="art" viewBox="0 0 540 540" aria-hidden="true">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- waves around the hub -->
+  <g fill="none" stroke="#FFA12B" stroke-width="2" filter="url(#glow)">
+    <circle cx="300" cy="360" r="78" stroke-opacity=".55"/>
+    <circle cx="300" cy="360" r="118" stroke-opacity=".3"/>
+    <circle cx="300" cy="360" r="160" stroke-opacity=".14"/>
+  </g>
+
+  <!-- links -->
+  <g stroke="#FFA12B" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)">
+    <path d="M300 360 L82 262"/><path d="M300 360 L470 244"/><path d="M300 360 L500 392"/>
+    <path d="M300 360 L408 478"/><path d="M300 360 L182 352"/>
+    <g stroke-dasharray="2 8" stroke-opacity=".8"><path d="M82 262 L182 352"/><path d="M470 244 L500 392"/><path d="M500 392 L408 478"/></g>
+  </g>
+
+  <!-- hub -->
+  <g filter="url(#glow)">
+    <circle cx="300" cy="360" r="50" fill="#0E0905" stroke="#FFA12B" stroke-width="4"/>
+    <g transform="translate(300 366)" fill="none" stroke="#FFF1DC" stroke-width="5" stroke-linecap="round">
+      <path d="M-26 -10 a37 37 0 0 1 52 0"/><path d="M-16 0 a23 23 0 0 1 32 0"/>
+    </g>
+    <circle cx="300" cy="376" r="5" fill="#FFF1DC"/>
+  </g>
+
+  <!-- nodes -->
+  <g fill="#0E0905" stroke="#FFF1DC" stroke-width="2.5" filter="url(#glow)">
+    <circle cx="82" cy="262" r="28"/><circle cx="470" cy="244" r="28"/><circle cx="500" cy="392" r="28"/>
+    <circle cx="408" cy="478" r="28"/><circle cx="182" cy="352" r="28"/>
+  </g>
+  <g filter="url(#glow)" fill="none" stroke="#FFA12B" stroke-width="2.4" stroke-linejoin="round">
+    <!-- family -->
+    <circle cx="74" cy="254" r="6"/><path d="M62 274 a12 11 0 0 1 24 0"/>
+    <circle cx="92" cy="258" r="5"/><path d="M84 274 a8.5 8.5 0 0 1 17 0"/>
+    <!-- friends -->
+    <path d="M456 234 h28 a4 4 0 0 1 4 4 v12 a4 4 0 0 1 -4 4 h-15 l-8 7 v-7 h-5 a4 4 0 0 1 -4 -4 v-12 a4 4 0 0 1 4 -4 z"/>
+    <!-- shop -->
+    <path d="M484 382 h32 l4 10 h-40 z"/><path d="M487 394 v13 h26 v-13"/><path d="M496 407 v-8 h8 v8"/>
+    <!-- world -->
+    <circle cx="408" cy="478" r="14"/><ellipse cx="408" cy="478" rx="6" ry="14"/><path d="M394 478 h28"/>
+    <!-- customer with phone -->
+    <circle cx="177" cy="343" r="7"/><path d="M163 366 a14 12 0 0 1 28 0"/><rect x="190" y="345" width="7" height="12" rx="1.5"/>
+  </g>
+
+  <!-- labels -->
+  <g font-family="Archivo" font-weight="900" font-size="13" text-anchor="middle" fill="#FFF1DC" filter="url(#glow)">
+    <text x="82" y="312">Famille</text><text x="470" y="294">Amis</text>
+    <text x="500" y="442">Boutique</text><text x="408" y="526">Le monde</text><text x="182" y="402">Clients</text>
+  </g>
+</svg>
+
+<div class="top">
+  <span class="brand">DAEWOOD WIFI</span>
+  <h1 class="d">Tout le marché<br>est connecté.</h1>
+</div>
+
+<div class="stamp">
+  <div class="k">DÈS</div>
+  <div class="p d">100<small>F</small></div>
+  <div class="m">1 heure · 1 Go</div>
+</div>
+
+</body>
+</html>

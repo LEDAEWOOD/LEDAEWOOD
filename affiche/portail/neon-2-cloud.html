@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>DAEWOOD WIFI · néon 2 (le cloud)</title>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  /* Rendered to one 1080 x 1080 image: the captive portal cannot load anything from the internet. */
+  :root { --black: #05040C; --violet: #A98BFF; --lime: #C8F542; --white: #F7F4FF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 540px; }
+  body { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; background: var(--black); color: var(--white); position: relative; overflow: hidden; }
+  svg.art { position: absolute; inset: 0; width: 540px; height: 540px; }
+
+  .top { position: absolute; left: 30px; top: 26px; }
+  .brand { font-weight: 800; font-size: 15px; letter-spacing: .16em; color: var(--violet); text-shadow: 0 0 8px rgba(169,139,255,.8); }
+  h1 {
+    font-family: "Tilt Neon", sans-serif; font-weight: 400; font-size: 56px; line-height: .98; margin-top: 12px;
+    text-shadow: 0 0 4px #fff, 0 0 14px rgba(169,139,255,.9), 0 0 34px rgba(169,139,255,.6);
+  }
+  h1 span { color: #E2D6FF; text-shadow: 0 0 4px #fff, 0 0 12px var(--violet), 0 0 28px var(--violet), 0 0 56px #7A52FF; }
+  .sub { font-size: 16px; line-height: 1.3; margin-top: 10px; width: 300px; color: #C9C2E8; }
+
+  .badge {
+    position: absolute; right: 26px; top: 30px; width: 124px; height: 124px; border-radius: 50%;
+    border: 3px solid var(--lime); transform: rotate(8deg); color: #EEFFC4;
+    box-shadow: 0 0 10px var(--lime), 0 0 26px rgba(200,245,66,.5), inset 0 0 14px rgba(200,245,66,.4);
+    text-shadow: 0 0 6px var(--lime), 0 0 16px rgba(200,245,66,.7);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;
+  }
+  .badge .a { font-weight: 800; font-size: 14px; letter-spacing: .12em; }
+  .badge .b { font-weight: 800; font-size: 36px; letter-spacing: -.03em; margin: 3px 0 2px; }
+  .badge .c { font-weight: 800; font-size: 19px; }
+</style>
+</head>
+<body>
+
+<svg class="art" viewBox="0 0 540 540" aria-hidden="true">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- links from apps to the cloud -->
+  <g stroke="#A98BFF" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" fill="none" filter="url(#glow)">
+    <path d="M100 312 Q130 318 168 338"/><path d="M112 432 Q150 410 190 392"/>
+    <path d="M440 300 Q410 300 398 312"/><path d="M430 430 Q400 408 382 392"/>
+  </g>
+
+  <!-- cloud: outline only (stroked shapes, then the same shapes filled black on top) -->
+  <g stroke="#A98BFF" stroke-width="8" fill="#A98BFF" filter="url(#glow)">
+    <circle cx="222" cy="332" r="58"/><circle cx="295" cy="292" r="82"/><circle cx="368" cy="334" r="54"/>
+    <rect x="160" y="330" width="266" height="72" rx="36"/>
+  </g>
+  <g fill="#0B0820">
+    <circle cx="222" cy="332" r="56"/><circle cx="295" cy="292" r="80"/><circle cx="368" cy="334" r="52"/>
+    <rect x="162" y="332" width="262" height="68" rx="34"/>
+  </g>
+
+  <!-- network inside the cloud -->
+  <g filter="url(#glow)">
+    <path d="M226 352 L284 304 L350 340 L298 372 Z M284 304 L298 372 M226 352 L350 340" fill="none" stroke="#F7F4FF" stroke-width="2" stroke-opacity=".8"/>
+    <g fill="#F7F4FF"><circle cx="226" cy="352" r="6"/><circle cx="284" cy="304" r="8"/><circle cx="350" cy="340" r="6"/><circle cx="298" cy="372" r="6"/></g>
+    <circle cx="284" cy="304" r="17" fill="none" stroke="#C8F542" stroke-width="3"/>
+  </g>
+
+  <!-- data going up and down -->
+  <g stroke="#A98BFF" stroke-width="1.5" stroke-opacity=".45"><path d="M246 404 V452"/><path d="M270 404 V452"/><path d="M294 404 V452"/></g>
+  <g filter="url(#glow)">
+    <rect x="241" y="414" width="10" height="10" rx="2" fill="#F7F4FF"/>
+    <rect x="265" y="430" width="10" height="10" rx="2" fill="#C8F542"/>
+    <rect x="289" y="410" width="10" height="10" rx="2" fill="#A98BFF"/>
+  </g>
+
+  <!-- phone -->
+  <g filter="url(#glow)" fill="none" stroke="#F7F4FF" stroke-width="3">
+    <rect x="202" y="458" width="136" height="126" rx="22"/>
+    <path d="M254 474 h32" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#glow)">
+    <g transform="translate(232 490)" fill="none" stroke="#C8F542" stroke-width="3.2" stroke-linecap="round">
+      <path d="M0 8 a14 14 0 0 1 20 0"/><path d="M4 13 a8 8 0 0 1 12 0"/>
+    </g>
+    <circle cx="242" cy="507" r="2.6" fill="#C8F542"/>
+    <text x="258" y="508" font-family="Bricolage Grotesque" font-weight="800" font-size="14" fill="#EEFFC4">Connecté</text>
+    <rect x="222" y="521" width="70" height="5" rx="2.5" fill="#C8F542"/>
+  </g>
+  <rect x="292" y="521" width="26" height="5" rx="2.5" fill="#2A2547"/>
+
+  <!-- app bubbles -->
+  <g stroke="#A98BFF" stroke-width="2.5" fill="#0B0820" filter="url(#glow)">
+    <circle cx="72" cy="306" r="30"/><circle cx="88" cy="444" r="30"/>
+    <circle cx="468" cy="296" r="30"/><circle cx="454" cy="444" r="30"/>
+  </g>
+  <g filter="url(#glow)">
+    <path d="M58 296 h28 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-16 l-8 7 v-7 h-4 a4 4 0 0 1 -4 -4 v-14 a4 4 0 0 1 4 -4 z" fill="none" stroke="#F7F4FF" stroke-width="2.5" stroke-linejoin="round"/>
+    <rect x="72" y="432" width="32" height="24" rx="4" fill="none" stroke="#F7F4FF" stroke-width="2.5"/>
+    <path d="M75 453 l9 -10 6 6 4 -4 7 8" fill="none" stroke="#C8F542" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="96" cy="439" r="2.6" fill="#C8F542"/>
+    <path d="M460 282 v28 l23 -14 z" fill="none" stroke="#C8F542" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M449 456 v-26 l18 -5 v24" fill="none" stroke="#F7F4FF" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="444" cy="456" r="5.5" fill="none" stroke="#F7F4FF" stroke-width="2.5"/><circle cx="462" cy="450" r="5.5" fill="none" stroke="#F7F4FF" stroke-width="2.5"/>
+  </g>
+</svg>
+
+<div class="top">
+  <div class="brand">DAEWOOD WIFI</div>
+  <h1>Toujours<br>dans le <span>cloud.</span></h1>
+  <p class="sub">Messages, photos, vidéos, musique : gardez le lien toute la journée.</p>
+</div>
+
+<div class="badge"><div class="a">ILLIMITÉ</div><div class="b">500 F</div><div class="c">1 jour</div></div>
+
+</body>
+</html>
