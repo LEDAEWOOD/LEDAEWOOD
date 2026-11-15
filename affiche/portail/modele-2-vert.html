@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>DAEWOOD WIFI · modèle 2 (vert et or)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  /* Rendered to one 1080 x 1350 image: the captive portal cannot load anything from the internet. */
+  :root { --green: #0C3524; --green-2: #14503A; --gold: #F6B91C; --white: #FBF8EF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 675px; }
+  body {
+    font-family: "DM Sans", sans-serif; background: var(--green); color: var(--white);
+    position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 26px 24px 0;
+  }
+  .s { font-family: "Fraunces", serif; }
+
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 15px; letter-spacing: .22em; color: var(--gold); }
+  .brand svg { width: 26px; height: 26px; }
+  h1 { font-size: 45px; line-height: 1.04; font-weight: 900; margin-top: 14px; letter-spacing: -.01em; }
+  h1 em { font-weight: 700; color: var(--gold); }
+
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; flex: 1; }
+  .col {
+    background: var(--green-2); border-radius: 86px 86px 16px 16px; padding: 22px 6px 12px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;
+  }
+  .col.mid { background: var(--white); color: var(--green); }
+  .col .num { font-size: 132px; line-height: .86; font-weight: 900; }
+  .col .unit { font-weight: 900; font-size: 22px; letter-spacing: .14em; text-transform: uppercase; margin-top: 10px; }
+  .col .badge {
+    margin-top: 14px; border: 2px solid var(--gold); color: var(--gold); border-radius: 999px;
+    font-weight: 900; font-size: 23px; padding: 4px 16px;
+  }
+  .col.mid .badge { border-color: var(--green); color: var(--green); }
+  .col .name { font-weight: 900; font-size: 17px; letter-spacing: .04em; margin-top: auto; padding-top: 10px; }
+  .col .price {
+    margin-top: 7px; width: 100%; background: var(--gold); color: var(--green); border-radius: 10px;
+    font-size: 40px; font-weight: 900; line-height: 1; padding: 9px 0 11px; white-space: nowrap;
+  }
+  .col .price small { font-size: 22px; margin-left: 3px; }
+  .promo {
+    position: absolute; top: -6px; right: -4px; background: #E5372B; color: #fff; border-radius: 999px;
+    font-weight: 900; font-size: 17px; padding: 4px 10px; transform: rotate(8deg);
+  }
+
+  .foot {
+    margin: 16px -24px 0; padding: 11px 24px 13px; border-top: 2px solid var(--green-2);
+    text-align: center; font-weight: 700; font-size: 18px; line-height: 1.35;
+  }
+  .foot b { color: var(--gold); font-weight: 900; }
+</style>
+</head>
+<body>
+
+<div class="brand">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#F6B91C" stroke-width="2.6" stroke-linecap="round" aria-hidden="true">
+    <path d="M2.5 9.5a14 14 0 0 1 19 0"/><path d="M6 13.2a9 9 0 0 1 12 0"/><path d="M9.4 16.8a4.2 4.2 0 0 1 5.2 0"/>
+    <circle cx="12" cy="20" r="1.2" fill="#F6B91C" stroke="none"/>
+  </svg>
+  DAEWOOD WIFI
+</div>
+<h1 class="s">Le bon forfait<br>pour <em>chaque moment.</em></h1>
+
+<div class="cols">
+  <div class="col">
+    <span class="promo">−60 %</span>
+    <div class="num s">1</div><div class="unit">Heure</div><div class="badge">1 Go</div>
+    <div class="name">GIGA HEURE</div><div class="price s">100<small>F</small></div>
+  </div>
+  <div class="col mid">
+    <div class="num s">1</div><div class="unit">Jour</div><div class="badge">3 Go</div>
+    <div class="name">GIGA JOUR</div><div class="price s">350<small>F</small></div>
+  </div>
+  <div class="col">
+    <div class="num s">3</div><div class="unit">Jours</div><div class="badge">72 h</div>
+    <div class="name">GIGA 3 JOURS</div><div class="price s">750<small>F</small></div>
+  </div>
+</div>
+
+<div class="foot"><b>Orange Money · MTN MoMo · Espèces</b><br>WhatsApp 671 12 60 92</div>
+
+</body>
+</html>
