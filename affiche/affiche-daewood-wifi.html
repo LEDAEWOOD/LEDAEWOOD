@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Affiche DAEWOOD WIFI</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  @page { size: 210mm 297mm; margin: 0; }
+  :root {
+    --ink: #111111;
+    --ink-2: #1d1d1d;
+    --orange: #FF9500;
+    --cream: #FFF6E5;
+    --muted: #b9b2a6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body {
+    font-family: "Archivo", "Inter", sans-serif;
+    background: var(--ink);
+    color: var(--cream);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    position: relative; overflow: hidden;
+  }
+  .display { font-family: "Anton", "Inter Display", sans-serif; font-weight: 400; text-transform: uppercase; }
+
+  /* Decorative signal arcs, top-right */
+  .arcs { position: absolute; right: -62mm; top: -62mm; width: 170mm; height: 170mm; }
+
+  .top { padding: 13mm 14mm 0; position: relative; }
+  .brand {
+    display: inline-block; background: var(--orange); color: var(--ink);
+    font-weight: 900; font-size: 11pt; letter-spacing: .18em;
+    padding: 2.2mm 4mm; border-radius: 1.2mm;
+  }
+  h1 { font-size: 118pt; line-height: .9; margin-top: 7mm; letter-spacing: .005em; }
+  h1 .o { color: var(--orange); }
+  .sub { font-size: 17pt; font-weight: 700; margin-top: 5mm; max-width: 125mm; line-height: 1.2; }
+  .sub b { color: var(--orange); font-weight: 900; }
+
+  .from {
+    position: absolute; right: 14mm; top: 78mm;
+    width: 48mm; height: 48mm; border-radius: 50%;
+    background: var(--orange); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transform: rotate(-8deg); text-align: center;
+  }
+  .from small { font-weight: 900; font-size: 9.5pt; letter-spacing: .12em; text-transform: uppercase; }
+  .from .p { font-size: 46pt; line-height: 1; margin: .5mm 0; }
+  .from .u { font-weight: 900; font-size: 11pt; letter-spacing: .1em; }
+
+  .label {
+    margin: 9mm 14mm 3.5mm; font-weight: 900; font-size: 10.5pt; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--orange);
+    display: flex; align-items: center; gap: 4mm;
+  }
+  .label::after { content: ""; flex: 1; height: .5mm; background: #3a3a3a; }
+
+  .grid { margin: 0 14mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+  .card {
+    background: var(--cream); color: var(--ink); border-radius: 2.5mm;
+    padding: 4.2mm 5mm 4mm; position: relative;
+    display: flex; align-items: flex-end; justify-content: space-between; min-height: 27mm;
+  }
+  .card .name { font-size: 19pt; line-height: 1.16; letter-spacing: .01em; }
+  .card .price { font-size: 37pt; line-height: .9; white-space: nowrap; }
+  .card .price span { font-size: 15pt; margin-left: 1mm; }
+  .card.hot { background: var(--orange); }
+  .tag {
+    position: absolute; top: -2mm; left: 5mm; background: var(--ink); color: var(--orange);
+    font-weight: 900; font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase;
+    padding: 1mm 2.4mm; border-radius: 1mm;
+  }
+  .card.hot .tag { color: var(--cream); }
+
+  .steps { margin: 0 14mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+  .step { border: .5mm solid #3a3a3a; border-radius: 2.5mm; padding: 4mm 4mm 4.2mm; }
+  .step .n { font-size: 26pt; color: var(--orange); line-height: 1; }
+  .step p { font-size: 11.5pt; font-weight: 700; line-height: 1.25; margin-top: 2mm; }
+  .step p b { color: var(--orange); font-weight: 900; }
+
+  .foot {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: var(--orange); color: var(--ink);
+    padding: 5mm 14mm 5.5mm; display: flex; justify-content: space-between; align-items: center; gap: 6mm;
+  }
+  .foot .pay { font-weight: 900; font-size: 12.5pt; line-height: 1.25; }
+  .foot .pay small { display: block; font-size: 8.5pt; letter-spacing: .18em; text-transform: uppercase; font-weight: 900; opacity: .75; }
+  .foot .who { text-align: right; font-size: 18pt; line-height: 1.05; }
+  .foot .who small { display: block; font-family: "Archivo", sans-serif; font-weight: 700; font-size: 9pt; letter-spacing: .08em; text-transform: none; }
+</style>
+</head>
+<body>
+
+<svg class="arcs" viewBox="0 0 200 200" aria-hidden="true">
+  <g fill="none" stroke="#FF9500" stroke-linecap="round">
+    <circle cx="100" cy="100" r="34" stroke-width="9" opacity=".95"/>
+    <circle cx="100" cy="100" r="56" stroke-width="9" opacity=".55"/>
+    <circle cx="100" cy="100" r="78" stroke-width="9" opacity=".28"/>
+    <circle cx="100" cy="100" r="98" stroke-width="3" opacity=".18"/>
+  </g>
+  <circle cx="100" cy="100" r="13" fill="#FF9500"/>
+</svg>
+
+<div class="top">
+  <span class="brand">DAEWOOD WIFI</span>
+  <h1 class="display">Wifi<br><span class="o">ici !</span></h1>
+  <p class="sub">Internet <b>rapide</b> au Petit Marché.<br>Payez seulement ce que vous utilisez.</p>
+</div>
+
+<div class="from">
+  <small>À partir de</small>
+  <div class="p display">100</div>
+  <div class="u">FCFA</div>
+</div>
+
+<div class="label">Nos forfaits</div>
+<div class="grid">
+  <div class="card"><span class="tag">Petit prix</span>
+    <div class="name display">Giga<br>Heure</div><div class="price display">100<span>F</span></div></div>
+  <div class="card">
+    <div class="name display">Dernier<br>Marché</div><div class="price display">200<span>F</span></div></div>
+  <div class="card">
+    <div class="name display">Smart<br>Day</div><div class="price display">300<span>F</span></div></div>
+  <div class="card">
+    <div class="name display">Power<br>Day</div><div class="price display">500<span>F</span></div></div>
+  <div class="card hot"><span class="tag">Bon plan</span>
+    <div class="name display">Giga<br>3 Jours</div><div class="price display">750<span>F</span></div></div>
+  <div class="card">
+    <div class="name display">Semaine<br>Solo</div><div class="price display">2 000<span>F</span></div></div>
+</div>
+
+<div class="label">Comment se connecter</div>
+<div class="steps">
+  <div class="step"><div class="n display">1</div><p>Connectez-vous au réseau <b>DAEWOOD WIFI</b></p></div>
+  <div class="step"><div class="n display">2</div><p>Choisissez votre <b>forfait</b> sur la page qui s'ouvre</p></div>
+  <div class="step"><div class="n display">3</div><p>Payez par <b>Mobile Money</b> et surfez tout de suite</p></div>
+</div>
+
+<div class="foot">
+  <div class="pay"><small>Paiement</small>Orange Money · MTN Mobile Money · Espèces</div>
+  <div class="who display">ETS Daewood<small>Petit Marché · Ngaoundéré</small></div>
+</div>
+
+</body>
+</html>
