@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>DAEWOOD WIFI · un visuel par forfait</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  /* One square visual per pass, chosen with the URL hash (#heure, #jour, #trois, #power, #solo, #duo).
+     Rendered to a 1080 x 1080 image: the captive portal cannot load anything from the internet. */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 540px; }
+  body {
+    font-family: "Bricolage Grotesque", sans-serif; font-weight: 600;
+    background: var(--bg); color: var(--ink); overflow: hidden;
+    display: flex; flex-direction: column; padding: 24px 26px 24px;
+  }
+  body.light { --bg: #F5F1E8; --ink: #0B1020; --muted: #4A5068; --accent: #1D3FFF; --on-accent: #FFFFFF; --track: #E4DDCC; --card: #FFFFFF; --line: #D9D1BE; }
+  body.neon  { --bg: #05060A; --ink: #F5F7FF; --muted: #AEB6CC; --on-accent: #05060A; --track: #171A24; --card: #0C0E15; --line: #262A36; }
+
+  b, .x { font-weight: 800; }
+
+  .bar { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-weight: 800; font-size: 14px; letter-spacing: .16em; color: var(--accent); }
+  .tag { font-weight: 800; font-size: 13px; letter-spacing: .14em; padding: 5px 11px; border-radius: 999px; border: 2px solid var(--accent); color: var(--accent); }
+  body.light .tag { background: var(--accent); color: var(--on-accent); }
+
+  .name { margin-top: 16px; display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; letter-spacing: .1em; color: var(--accent); }
+  .badge { font-size: 12px; letter-spacing: .08em; background: var(--ink); color: var(--bg); padding: 4px 9px; border-radius: 6px; }
+
+  h1 { font-weight: 800; font-size: 37px; line-height: 1.04; letter-spacing: -.025em; margin-top: 6px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .body { font-size: 16px; line-height: 1.32; color: var(--muted); margin-top: 9px; }
+
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+  /* uses */
+  .uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .use { background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 13px 10px 12px; text-align: center; }
+  .use svg { width: 34px; height: 34px; color: var(--accent); }
+  .use div { font-weight: 800; font-size: 14px; line-height: 1.2; margin-top: 6px; }
+
+  /* compare */
+  .cmp { display: flex; flex-direction: column; gap: 9px; }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .row .lab { width: 128px; font-weight: 800; font-size: 14px; line-height: 1.15; }
+  .row .track { flex: 1; height: 40px; background: var(--track); border-radius: 10px; }
+  .row .fill { height: 100%; border-radius: 10px; background: var(--line); display: flex; align-items: center; justify-content: flex-end; padding: 0 12px; font-weight: 800; font-size: 18px; white-space: nowrap; }
+  body.light .row .fill { background: #CFC6B1; }
+  body .row.hl .fill { background: var(--accent); color: var(--on-accent); }
+  .save { align-self: flex-end; margin-top: 3px; font-weight: 800; font-size: 16px; padding: 6px 13px; border-radius: 999px; border: 2px solid var(--accent); color: var(--accent); }
+
+  /* split (duo) */
+  .split { display: flex; align-items: stretch; gap: 10px; }
+  .who { flex: 1; background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 10px 12px; display: flex; align-items: center; gap: 12px; }
+  .who svg { width: 42px; height: 42px; color: var(--accent); flex: none; }
+  .who .t { font-size: 14px; color: var(--muted); }
+  .who .p { font-weight: 800; font-size: 32px; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+  .who .p small { font-size: 17px; margin-left: 2px; }
+  .plus { align-self: center; font-weight: 800; font-size: 26px; color: var(--accent); }
+
+  .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; border-top: 2px solid var(--line); padding-top: 13px; }
+  .price { font-weight: 800; font-size: 60px; line-height: .86; letter-spacing: -.035em; white-space: nowrap; }
+  .price small { font-size: 28px; letter-spacing: 0; margin-left: 4px; }
+  .unit { font-size: 15px; color: var(--muted); margin-top: 5px; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; max-width: 280px; }
+  .chip { font-weight: 800; font-size: 14px; padding: 5px 11px; border-radius: 999px; background: var(--card); border: 2px solid var(--line); white-space: nowrap; }
+  .chip.on { border-color: var(--accent); color: var(--accent); }
+
+  /* neon glow */
+  body.neon .brand, body.neon .tag, body.neon .name { text-shadow: 0 0 8px var(--accent); }
+  body.neon .tag, body.neon .save, body.neon .chip.on { box-shadow: 0 0 8px var(--accent), inset 0 0 8px var(--glow2); }
+  body.neon h1 { text-shadow: 0 0 12px var(--glow2); }
+  body.neon h1 em { color: var(--accent-hi); text-shadow: 0 0 8px var(--accent), 0 0 22px var(--accent); }
+  body.neon .price { color: var(--accent-hi); text-shadow: 0 0 4px #fff, 0 0 14px var(--accent), 0 0 34px var(--accent); }
+  body.neon .row.hl .fill { box-shadow: 0 0 10px var(--accent), 0 0 24px var(--glow2); }
+  body.neon .save { text-shadow: 0 0 8px var(--accent); }
+  body.neon .use svg, body.neon .who svg, body.neon .plus { filter: drop-shadow(0 0 5px var(--accent)); }
+  body.neon .who.on, body.neon .use { border-color: var(--accent); box-shadow: 0 0 8px var(--glow2), inset 0 0 10px var(--glow2); }
+</style>
+</head>
+<body>
+<div class="bar"><div class="brand">DAEWOOD WIFI</div><div class="tag" id="tag"></div></div>
+<div class="name" id="name"></div>
+<h1 id="h"></h1>
+<p class="body" id="body"></p>
+<div class="mid" id="mid"></div>
+<div class="foot">
+  <div><div class="price" id="price"></div><div class="unit" id="unit"></div></div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<script>
+  const I = {
+    chat: '<path d="M4 4.5h16a1.5 1.5 0 0 1 1.5 1.5v9.5a1.5 1.5 0 0 1-1.5 1.5H10l-5 4v-4H4a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 4 4.5z"/>',
+    video: '<rect x="2" y="6" width="13" height="12" rx="2.5"/><path d="M15 10.5l6-3.5v10l-6-3.5z"/>',
+    send: '<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',
+    users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M16 14.2a5 5 0 0 1 6 5.8"/>',
+    music: '<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+    play: '<rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9v6l5-3z"/>',
+    film: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4"/>',
+    down: '<path d="M12 4v12M7 11l5 5 5-5M4 20h16"/>',
+    person: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  };
+  const svg = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${I[k]}</svg>`;
+
+  const F = {
+    heure: { theme: 'light', tag: 'LIMITÉ', name: 'GIGA HEURE', badge: 'LE PLUS VENDU',
+      h: "Besoin d'internet maintenant ? <em>100&nbsp;F</em> suffisent.",
+      body: "Le prix le plus bas, pour un besoin rapide.",
+      uses: [['chat', 'Messages WhatsApp'], ['video', 'Un appel vidéo'], ['send', 'Un fichier à envoyer']],
+      price: '100', unit: 'pour 1 heure', chips: ['1 heure', '1 Go', '1 appareil'] },
+    jour: { theme: 'light', tag: 'LIMITÉ', name: 'GIGA JOUR',
+      h: "Connecté du matin au soir pour <em>350&nbsp;F.</em>",
+      body: "3 Go valables 24 heures : plus besoin de racheter toutes les heures.",
+      uses: [['users', 'Réseaux sociaux'], ['music', 'Musique'], ['play', 'Vidéos courtes']],
+      price: '350', unit: 'pour 24 heures', chips: ['1 jour', '3 Go', '1 appareil'] },
+    trois: { theme: 'light', tag: 'LIMITÉ', name: 'GIGA 3 JOURS',
+      h: "3 jours de connexion, <em>250&nbsp;F</em> par&nbsp;jour.",
+      body: "Un seul paiement pour 3 jours, moins cher que 3 Giga Jour.",
+      cmp: [['3 × Giga Jour', '1 050 F', 100], ['Giga 3 Jours', '750 F', 71, 1]], save: '300 F d’économie',
+      price: '750', unit: 'soit 250 F par jour', chips: ['3 jours', '1 appareil'] },
+    power: { theme: 'neon', accent: '#FFA12B', hi: '#FFE2B8', glow: 'rgba(255,161,43,.45)', tag: 'ILLIMITÉ', name: 'POWER DAY',
+      h: "Une journée entière <em>sans compter</em> vos&nbsp;Go.",
+      body: "150 F de plus que le Giga Jour, et l'internet devient illimité.",
+      cmp: [['Giga Jour', '350 F · 3 Go', 70], ['Power Day', '500 F · illimité', 100, 1]], save: '+150 F seulement',
+      price: '500', unit: 'pour 24 heures', chips: ['1 jour', 'Illimité', '1 appareil'], on: 'Illimité' },
+    solo: { theme: 'neon', accent: '#3DE8FF', hi: '#D9FAFF', glow: 'rgba(61,232,255,.4)', tag: 'ILLIMITÉ', name: 'SEMAINE SOLO',
+      h: "7 jours illimités, <em>286&nbsp;F</em> par&nbsp;jour.",
+      body: "Le meilleur prix par jour pour une personne seule.",
+      cmp: [['7 × Power Day', '3 500 F', 100], ['Semaine Solo', '2 000 F', 57, 1]], save: '1 500 F d’économie',
+      price: '2 000', unit: 'soit 286 F par jour', chips: ['7 jours', 'Illimité', '1 appareil'], on: 'Illimité' },
+    duo: { theme: 'neon', accent: '#FF4FD8', hi: '#FFD9F6', glow: 'rgba(255,79,216,.4)', tag: 'ILLIMITÉ', name: 'SEMAINE DUO',
+      h: "À deux, la semaine revient à <em>1&nbsp;500&nbsp;F</em> chacun.",
+      body: "Un seul paiement, deux téléphones en illimité pendant 7 jours.",
+      split: true, save: '500 F d’économie chacun par rapport à la Semaine Solo',
+      price: '3 000', unit: 'pour deux personnes', chips: ['7 jours', 'Illimité', '2 appareils'], on: '2 appareils' },
+  };
+
+  const f = F[location.hash.slice(1)] || F.heure, $ = id => document.getElementById(id);
+  document.body.className = f.theme;
+  if (f.accent) { const s = document.body.style; s.setProperty('--accent', f.accent); s.setProperty('--accent-hi', f.hi); s.setProperty('--glow2', f.glow); }
+  $('tag').textContent = f.tag;
+  $('name').innerHTML = f.name + (f.badge ? `<span class="badge">${f.badge}</span>` : '');
+  $('h').innerHTML = f.h;
+  $('body').textContent = f.body;
+  $('price').innerHTML = `${f.price}<small>F</small>`;
+  $('unit').textContent = f.unit;
+  $('chips').innerHTML = f.chips.map(c => `<span class="chip${c === f.on ? ' on' : ''}">${c}</span>`).join('');
+
+  let m = '';
+  if (f.uses) m = `<div class="uses">${f.uses.map(([i, t]) => `<div class="use">${svg(i)}<div>${t}</div></div>`).join('')}</div>`;
+  if (f.cmp) m = `<div class="cmp">${f.cmp.map(([l, v, w, hl]) =>
+      `<div class="row${hl ? ' hl' : ''}"><div class="lab">${l}</div><div class="track"><div class="fill" style="width:${w}%">${v}</div></div></div>`).join('')}
+      <div class="save">${f.save}</div></div>`;
+  if (f.split) m = `<div class="cmp"><div class="split">
+      <div class="who on">${svg('person')}<div><div class="t">Personne 1</div><div class="p">1 500<small>F</small></div></div></div>
+      <div class="plus">+</div>
+      <div class="who on">${svg('person')}<div><div class="t">Personne 2</div><div class="p">1 500<small>F</small></div></div></div>
+    </div><div class="save">${f.save}</div></div>`;
+  $('mid').innerHTML = m;
+</script>
+</body>
+</html>
