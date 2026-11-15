@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>DAEWOOD WIFI · carré 2 (le cloud)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  /* Rendered to one 1080 x 1080 image: the captive portal cannot load anything from the internet. */
+  :root { --bg: #EEEAFF; --ink: #1E1650; --violet: #6B4EFF; --lime: #C5F23A; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 540px; }
+  body { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; background: var(--bg); color: var(--ink); position: relative; overflow: hidden; }
+  svg.art { position: absolute; inset: 0; width: 540px; height: 540px; }
+
+  .top { position: absolute; left: 30px; top: 26px; }
+  .brand { font-weight: 800; font-size: 15px; letter-spacing: .16em; color: var(--violet); }
+  h1 { font-weight: 800; font-size: 54px; line-height: .96; letter-spacing: -.03em; margin-top: 12px; }
+  h1 span { color: var(--violet); }
+  .sub { font-size: 16px; line-height: 1.3; margin-top: 10px; width: 300px; }
+
+  .badge {
+    position: absolute; right: 26px; top: 30px; width: 124px; height: 124px; border-radius: 50%;
+    background: var(--lime); transform: rotate(8deg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;
+  }
+  .badge .a { font-weight: 800; font-size: 14px; letter-spacing: .12em; }
+  .badge .b { font-weight: 800; font-size: 40px; letter-spacing: -.03em; margin: 3px 0 2px; }
+  .badge .c { font-weight: 800; font-size: 19px; }
+</style>
+</head>
+<body>
+
+<svg class="art" viewBox="0 0 540 540" aria-hidden="true">
+  <!-- links from apps to the cloud -->
+  <g stroke="#1E1650" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" fill="none">
+    <path d="M100 312 Q130 318 168 338"/>
+    <path d="M112 432 Q150 410 190 392"/>
+    <path d="M440 300 Q410 300 398 312"/>
+    <path d="M430 430 Q400 408 382 392"/>
+  </g>
+
+  <!-- cloud -->
+  <g fill="#6B4EFF">
+    <circle cx="222" cy="332" r="58"/>
+    <circle cx="295" cy="292" r="82"/>
+    <circle cx="368" cy="334" r="54"/>
+    <rect x="160" y="330" width="266" height="72" rx="36"/>
+  </g>
+  <!-- network inside the cloud -->
+  <g stroke="#FFFFFF" stroke-width="2.5" stroke-opacity=".75" fill="none">
+    <path d="M226 352 L284 304 L350 340 L298 372 Z M284 304 L298 372 M226 352 L350 340"/>
+  </g>
+  <g fill="#FFFFFF">
+    <circle cx="226" cy="352" r="7"/><circle cx="284" cy="304" r="9"/>
+    <circle cx="350" cy="340" r="7"/><circle cx="298" cy="372" r="7"/>
+  </g>
+  <circle cx="284" cy="304" r="17" fill="none" stroke="#C5F23A" stroke-width="3"/>
+
+  <!-- data going up and down -->
+  <g stroke="#1E1650" stroke-width="2" stroke-opacity=".35"><path d="M246 404 V452"/><path d="M270 404 V452"/><path d="M294 404 V452"/></g>
+  <rect x="241" y="414" width="10" height="10" rx="2" fill="#1E1650"/>
+  <rect x="265" y="430" width="10" height="10" rx="2" fill="#C5F23A" stroke="#1E1650" stroke-width="1.5"/>
+  <rect x="289" y="410" width="10" height="10" rx="2" fill="#6B4EFF"/>
+
+  <!-- phone -->
+  <rect x="200" y="456" width="140" height="130" rx="22" fill="#1E1650"/>
+  <rect x="211" y="467" width="118" height="110" rx="14" fill="#FFFFFF"/>
+  <rect x="253" y="472" width="34" height="5" rx="2.5" fill="#1E1650"/>
+  <g transform="translate(232 490)" fill="none" stroke="#6B4EFF" stroke-width="3.2" stroke-linecap="round">
+    <path d="M0 8 a14 14 0 0 1 20 0"/><path d="M4 13 a8 8 0 0 1 12 0"/>
+  </g>
+  <circle cx="242" cy="507" r="2.6" fill="#6B4EFF"/>
+  <text x="258" y="508" font-family="Bricolage Grotesque" font-weight="800" font-size="14" fill="#1E1650">Connecté</text>
+  <rect x="222" y="520" width="96" height="7" rx="3.5" fill="#EEEAFF"/>
+  <rect x="222" y="520" width="70" height="7" rx="3.5" fill="#C5F23A"/>
+
+  <!-- app bubbles -->
+  <g stroke="#1E1650" stroke-width="3" fill="#FFFFFF">
+    <circle cx="72" cy="306" r="30"/><circle cx="88" cy="444" r="30"/>
+    <circle cx="468" cy="296" r="30"/><circle cx="454" cy="444" r="30"/>
+  </g>
+  <!-- chat -->
+  <path d="M58 296 h28 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-16 l-8 7 v-7 h-4 a4 4 0 0 1 -4 -4 v-14 a4 4 0 0 1 4 -4 z" fill="#6B4EFF"/>
+  <!-- photo -->
+  <rect x="72" y="432" width="32" height="24" rx="4" fill="none" stroke="#1E1650" stroke-width="3"/>
+  <path d="M75 453 l9 -10 6 6 4 -4 7 8 z" fill="#6B4EFF"/>
+  <circle cx="96" cy="439" r="3" fill="#C5F23A" stroke="#1E1650" stroke-width="1.5"/>
+  <!-- play -->
+  <path d="M460 282 v28 l23 -14 z" fill="#6B4EFF"/>
+  <!-- music -->
+  <path d="M449 456 v-26 l18 -5 v24" fill="none" stroke="#6B4EFF" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="444" cy="456" r="6" fill="#6B4EFF"/><circle cx="462" cy="450" r="6" fill="#6B4EFF"/>
+</svg>
+
+<div class="top">
+  <div class="brand">DAEWOOD WIFI</div>
+  <h1>Toujours<br>dans le <span>cloud.</span></h1>
+  <p class="sub">Messages, photos, vidéos, musique : gardez le lien toute la journée.</p>
+</div>
+
+<div class="badge"><div class="a">GIGA JOUR</div><div class="b">3 Go</div><div class="c">350 F</div></div>
+
+</body>
+</html>

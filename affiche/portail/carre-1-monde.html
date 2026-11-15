@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>DAEWOOD WIFI · carré 1 (le monde)</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* Rendered to one 1080 x 1080 image: the captive portal cannot load anything from the internet. */
+  :root { --night: #081233; --cyan: #3DE0FF; --orange: #FF9500; --white: #F4F7FF; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 540px; }
+  body { font-family: "Space Grotesk", sans-serif; background: var(--night); color: var(--white); position: relative; overflow: hidden; }
+
+  #g { position: absolute; left: 92px; top: 112px; width: 520px; height: 520px; }
+
+  .top { position: absolute; left: 30px; top: 28px; width: 300px; }
+  .brand { font-weight: 700; font-size: 14px; letter-spacing: .2em; color: var(--cyan); display: flex; align-items: center; gap: 8px; }
+  .brand i { width: 9px; height: 9px; border-radius: 50%; background: var(--cyan); display: inline-block; }
+  h1 { font-weight: 700; font-size: 52px; line-height: .98; letter-spacing: -.02em; margin-top: 16px; }
+  h1 span { color: var(--orange); }
+  .sub { font-weight: 500; font-size: 16px; line-height: 1.35; margin-top: 14px; color: #C9D3F2; width: 215px; }
+
+  .ticket {
+    position: absolute; left: 30px; bottom: 30px; background: var(--orange); color: var(--night);
+    border-radius: 14px; padding: 12px 18px 13px; display: flex; align-items: center; gap: 16px;
+  }
+  .ticket .k { font-weight: 700; font-size: 13px; letter-spacing: .14em; }
+  .ticket .m { font-weight: 500; font-size: 15px; margin-top: 2px; }
+  .ticket .p { font-weight: 700; font-size: 44px; line-height: 1; letter-spacing: -.03em; white-space: nowrap; }
+  .ticket .p small { font-size: 22px; margin-left: 2px; }
+  .ticket hr { border: 0; border-left: 2px dashed rgba(8,18,51,.45); height: 46px; }
+</style>
+</head>
+<body>
+
+<svg id="g" viewBox="0 0 520 520" aria-hidden="true"></svg>
+
+<div class="top">
+  <div class="brand"><i></i>DAEWOOD WIFI</div>
+  <h1>Le monde<br>entier,<br><span>ici.</span></h1>
+  <p class="sub">Messages, appels vidéo, réseaux sociaux : parlez au monde depuis Ngaoundéré.</p>
+</div>
+
+<div class="ticket">
+  <div><div class="k">GIGA HEURE</div><div class="m">1 heure · 1 Go</div></div>
+  <hr>
+  <div class="p">100<small>F</small></div>
+</div>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('g');
+  const D = Math.PI / 180, R = 228, C = 260, lat0 = 4 * D, lon0 = 30 * D;
+  const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+
+  function proj(lat, lon, r = 1) {          // degrees in, screen x/y + depth out
+    lat *= D; lon *= D; const dl = lon - lon0;
+    const x = Math.cos(lat) * Math.sin(dl);
+    const y = Math.cos(lat0) * Math.sin(lat) - Math.sin(lat0) * Math.cos(lat) * Math.cos(dl);
+    const z = Math.sin(lat0) * Math.sin(lat) + Math.cos(lat0) * Math.cos(lat) * Math.cos(dl);
+    return [C + x * R * r, C - y * R * r, z];
+  }
+  const vec = (lat, lon) => [Math.cos(lat*D)*Math.cos(lon*D), Math.cos(lat*D)*Math.sin(lon*D), Math.sin(lat*D)];
+  const ll = v => [Math.asin(v[2]) / D, Math.atan2(v[1], v[0]) / D];
+
+  // Sphere body and halo rings
+  el('circle', { cx: C, cy: C, r: R + 26, fill: '#0B1A45' });
+  el('circle', { cx: C, cy: C, r: R + 12, fill: '#0E2156' });
+  el('circle', { cx: C, cy: C, r: R, fill: '#10265F', stroke: '#3DE0FF', 'stroke-opacity': .45, 'stroke-width': 1.5 });
+
+  // Dotted sphere
+  for (let lat = -84; lat <= 84; lat += 4.6) {
+    const n = Math.max(1, Math.round(360 * Math.cos(lat * D) / 4.6));
+    for (let i = 0; i < n; i++) {
+      const [x, y, z] = proj(lat, i * 360 / n);
+      if (z > 0.02) el('circle', { cx: x, cy: y, r: 1.25 + z * .5, fill: '#3DE0FF', 'fill-opacity': (0.12 + 0.5 * z).toFixed(2) });
+    }
+  }
+
+  // Links from Ngaoundéré
+  const home = [7.32, 13.58];
+  const dest = [['Paris', 48.86, 2.35, -1], ['Moscou', 55.75, 37.6, 1], ['Dubaï', 25.2, 55.27, 1],
+                ['Nairobi', -1.29, 36.82, 1], ['Johannesburg', -26.2, 28.04, 1], ['Lagos', 6.52, 3.38, -1]];
+  for (const [name, la, lo, side] of dest) {
+    const a = vec(...home), b = vec(la, lo);
+    const om = Math.acos(a[0]*b[0] + a[1]*b[1] + a[2]*b[2]), h = 0.06 + 0.28 * om / Math.PI;
+    let d = '';
+    for (let t = 0; t <= 1.0001; t += 0.02) {
+      const s1 = Math.sin((1 - t) * om) / Math.sin(om), s2 = Math.sin(t * om) / Math.sin(om);
+      const [la2, lo2] = ll([a[0]*s1 + b[0]*s2, a[1]*s1 + b[1]*s2, a[2]*s1 + b[2]*s2]);
+      const [x, y] = proj(la2, lo2, 1 + h * Math.sin(Math.PI * t));
+      d += (t === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    el('path', { d, fill: 'none', stroke: '#FF9500', 'stroke-width': 2.4, 'stroke-linecap': 'round' });
+    const [x, y] = proj(la, lo);
+    el('circle', { cx: x, cy: y, r: 8, fill: '#3DE0FF', 'fill-opacity': .25 });
+    el('circle', { cx: x, cy: y, r: 3.6, fill: '#3DE0FF' });
+    const t = el('text', { x: x + side * 11, y: y + 4, fill: '#F4F7FF', 'font-family': 'Space Grotesk', 'font-weight': 700, 'font-size': 12.5, 'text-anchor': side < 0 ? 'end' : 'start' });
+    t.textContent = name;
+  }
+
+  // Home point
+  const [hx, hy] = proj(...home);
+  el('circle', { cx: hx, cy: hy, r: 26, fill: '#FF9500', 'fill-opacity': .14 });
+  el('circle', { cx: hx, cy: hy, r: 15, fill: '#FF9500', 'fill-opacity': .3 });
+  el('circle', { cx: hx, cy: hy, r: 7, fill: '#FF9500', stroke: '#081233', 'stroke-width': 2 });
+</script>
+</body>
+</html>
