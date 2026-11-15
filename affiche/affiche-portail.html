@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Affiche portail DAEWOOD WIFI</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  /* Rendered to a single image (1080 x 1440) for the captive portal:
+     the portal itself must not load anything from the internet. */
+  :root { --ink: #111111; --orange: #FF9500; --cream: #FFF6E5; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 540px; height: 720px; }
+  body {
+    font-family: "Archivo", "Inter", sans-serif; background: var(--ink); color: var(--cream);
+    position: relative; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .display { font-family: "Anton", "Inter Display", sans-serif; font-weight: 400; text-transform: uppercase; }
+  .arcs { position: absolute; right: -150px; top: -150px; width: 400px; height: 400px; }
+
+  .top { padding: 24px 26px 0; position: relative; }
+  .brand {
+    display: inline-block; background: var(--orange); color: var(--ink);
+    font-weight: 900; font-size: 14px; letter-spacing: .16em; padding: 6px 11px; border-radius: 4px;
+  }
+  h1 { font-size: 82px; line-height: .95; margin-top: 14px; }
+  h1 .o { color: var(--orange); }
+  .sub { font-size: 21px; font-weight: 700; line-height: 1.25; margin-top: 12px; }
+  .sub b { color: var(--orange); font-weight: 900; }
+
+  .from {
+    position: absolute; right: 24px; top: 96px; width: 132px; height: 132px; border-radius: 50%;
+    background: var(--orange); color: var(--ink); transform: rotate(-8deg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .from small { font-weight: 900; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
+  .from .p { font-size: 58px; line-height: 1.05; }
+  .from .u { font-weight: 900; font-size: 15px; letter-spacing: .1em; }
+
+  .grid { margin: 20px 26px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; flex: 1; }
+  .card {
+    background: var(--cream); color: var(--ink); border-radius: 8px; padding: 0 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card .name { font-size: 23px; line-height: 1.16; }
+  .card .price { font-size: 44px; line-height: 1; white-space: nowrap; }
+  .card .price span { font-size: 20px; margin-left: 3px; }
+
+  .steps { margin: 16px 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .step {
+    border: 2px solid #444; border-radius: 8px; padding: 9px 0; text-align: center;
+    font-size: 23px; letter-spacing: .02em;
+  }
+  .step i { font-style: normal; color: var(--orange); margin-right: 7px; }
+
+  .foot { background: var(--orange); color: var(--ink); padding: 13px 26px 14px; text-align: center; font-weight: 900; font-size: 19px; }
+</style>
+</head>
+<body>
+
+<svg class="arcs" viewBox="0 0 200 200" aria-hidden="true">
+  <g fill="none" stroke="#FF9500" stroke-linecap="round">
+    <circle cx="100" cy="100" r="34" stroke-width="9" opacity=".95"/>
+    <circle cx="100" cy="100" r="56" stroke-width="9" opacity=".5"/>
+    <circle cx="100" cy="100" r="78" stroke-width="9" opacity=".25"/>
+  </g>
+  <circle cx="100" cy="100" r="13" fill="#FF9500"/>
+</svg>
+
+<div class="top">
+  <span class="brand">DAEWOOD WIFI</span>
+  <h1 class="display">Internet<br><span class="o">rapide</span></h1>
+  <p class="sub">Vous êtes connecté au réseau.<br>Choisissez un <b>forfait</b> pour surfer.</p>
+</div>
+
+<div class="from">
+  <small>Dès</small>
+  <div class="p display">100</div>
+  <div class="u">FCFA</div>
+</div>
+
+<div class="grid">
+  <div class="card"><div class="name display">Giga<br>Heure</div><div class="price display">100<span>F</span></div></div>
+  <div class="card"><div class="name display">Dernier<br>Marché</div><div class="price display">200<span>F</span></div></div>
+  <div class="card"><div class="name display">Smart<br>Day</div><div class="price display">300<span>F</span></div></div>
+  <div class="card"><div class="name display">Power<br>Day</div><div class="price display">500<span>F</span></div></div>
+  <div class="card"><div class="name display">Giga<br>3 Jours</div><div class="price display">750<span>F</span></div></div>
+  <div class="card"><div class="name display">Semaine<br>Solo</div><div class="price display">2 000<span>F</span></div></div>
+</div>
+
+<div class="steps">
+  <div class="step display"><i>1</i>Choisissez</div>
+  <div class="step display"><i>2</i>Payez</div>
+  <div class="step display"><i>3</i>Surfez</div>
+</div>
+
+<div class="foot">Orange Money · MTN MoMo · Espèces</div>
+
+</body>
+</html>
